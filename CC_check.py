@@ -1,6 +1,7 @@
 import os, sys
 try:
     import requests
+    from colorama import Fore
 except:
     print("Module requests not found")
         
@@ -10,19 +11,17 @@ VERSION = "0.9.0"
 API = "https://lookup.binlist.net/"
 
 def banner():
-    print('''                              ________
-                          ,o88~~88888888o,
-                        ,~~?8P  88888     8,
-                       d  d88 d88 d8_88     b
-                      d  d888888888          b
-                      8,?88888888  d8.b o.   8
-                      8~88888888~ ~^8888\ db 8
-                      ?  888888          ,888P
-                       ?  `8888b,_      d888P
-                        `   8888888b   ,888'
-                          ~-?8888888 _.P-~ 
-                               ~~~~~~
-    ''')
+    print(Fore.BLUE + "                              ________")
+    print(Fore.CYAN + "                          ,o88~~88888888o,")
+    print(Fore.GREEN + "                        ,~~?8P  88888     8,")
+    print(Fore.YELLOW + "                       d  d88 d88 d8_88     b")
+    print(Fore.YELLOW + "                      d  d888888888          b")
+    print(Fore.RED + "                      8,?88888888  d8.b o.   8")
+    print(Fore.YELLOW + "                      8~88888888~ ~^8888\ db 8")
+    print(Fore.YELLOW + "                      ?  888888          ,888P")
+    print(Fore.GREEN + "                        `   8888888b   ,888'")
+    print(Fore.CYAN + "                          ~-?8888888 _.P-~ ")
+    print(Fore.BLUE + "                               ~~~~~~")
 
 def clean():
     if(os.name == "nt"):
@@ -34,8 +33,9 @@ def check(cardNum):
     try:
         data = requests.get(API+cardNum).json()
         sys.stdout.flush()
-        print("\n\n CC Info \n")
-        print("\n [Country] " + data['country']['name'])
+        Fore.YELLOW
+        print(Fore.RED + "\n\n CC Info \n")
+        print(Fore.YELLOW + "\n [Country] " + data['country']['name'])
         print("\n [Sheme] " + data['scheme'])
         print("\n [Type] " + data['type'])
         print("\n [Brand] " + data['brand'])
